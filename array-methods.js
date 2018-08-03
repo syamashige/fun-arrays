@@ -5,7 +5,6 @@ var dataset = require('./dataset.json');
   greater than 100000
   assign the resulting new array to `hundredThousandairs`
 */
-var hundredThousandairs = null;
 
 /*
   DO NOT MUTATE DATA.
