@@ -8,7 +8,7 @@ const balances = dataset.bankBalances;
 */
 var hundredThousandairs = null;
 let newArray = [];
-const greatAccounts = balances.forEach(function (account) {
+const greatAccounts = balances.forEach(account => {
   if (account.amount > 100000) {
     newArray.push(account);
   }
@@ -72,7 +72,7 @@ const tenthAccount = balances.map(account => {
   return {
     "amount": account.amount,
     "state": account.state,
-    "roundedDime": Math.round((account.amount * 10) / 10)
+    "roundedDime": (Math.round((account.amount) * 10) / 10)
   }
 })
 datasetWithRoundedDime = tenthAccount;
@@ -80,6 +80,18 @@ datasetWithRoundedDime = tenthAccount;
 
 // set sumOfBankBalances to be the sum of all value held at `amount` for each bank object
 var sumOfBankBalances = null;
+let sum = 0;
+
+const sumOfEverything = balances.reduce((a, b) => {
+  console.log("a", a);
+  console.log("b", b)
+  let answer = a + parseFloat(b.amount);
+  return (Math.round(answer * 100) / 100)
+  
+}, sum);
+
+sumOfBankBalances = sumOfEverything;
+
 
 /*
   from each of the following states:
@@ -92,7 +104,31 @@ var sumOfBankBalances = null;
   take each `amount` and add 18.9% interest to it rounded to the nearest cent
   and then sum it all up into one value saved to `sumOfInterests`
  */
+
 var sumOfInterests = null;
+
+sumOfInterests = balances.filter(account => 
+  
+account.state === "WI" || account.state === "IL" || account.state === "WY" || account.state === "OH" || account.state === "GA" || account.state === "DE").reduce((a, b) => {
+  console.log("a", a);
+  console.log("b", b)
+  let answer = a + (parseFloat(b.amount)) * 0.189;
+  return (Math.round(answer * 100) / 100)
+  
+}, 0);
+
+// console.log("filtered", filterStates)
+
+// let getInterest = 0
+// const sumTheInterest = filterStates.reduce((a, b) => {
+//   console.log("a", a);
+//   console.log("b", b)
+//   let answer = a + (parseFloat(b.amount)) * 0.189;
+//   return (Math.round(answer * 100) / 100)
+  
+// }, getInterest);
+
+// sumOfInterests = sumTheInterest;
 
 /*
   aggregate the sum of bankBalance amounts
@@ -111,6 +147,8 @@ var sumOfInterests = null;
   )
  */
 var stateSums = null;
+
+
 
 /*
   for all states *NOT* in the following states:
