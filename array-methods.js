@@ -147,7 +147,17 @@ account.state === "WI" || account.state === "IL" || account.state === "WY" || ac
   )
  */
 var stateSums = null;
-
+let newObj = {};
+const sumTheStates = balances.map(account => {
+  if (!newObj.hasOwnProperty(account.state)) {
+    newObj[account.state] = (Math.round((account.amount) * 100)/100)
+  }
+  else {
+    newObj[account.state] = (Math.round((newObj[account.state] + parseFloat(account.amount)) * 100)) / 100
+    console.log("newObj", newObj)
+  }
+})
+stateSums = newObj;
 
 
 /*
@@ -167,7 +177,33 @@ var stateSums = null;
     round this number to the nearest 10th of a cent before moving on.
   )
  */
+
 var sumOfHighInterests = null;
+
+const sumOfOtherStates = balances.filter(account => 
+  account.state !== "WI" && account.state !== "IL" && account.state !== "WY" && account.state !== "OH" && account.state !== "GA" && account.state !== "DE"
+); 
+
+let stateInterests = {};
+const getInterestOfOtherStates = sumOfOtherStates.map(account => {
+  if (!stateInterests.hasOwnProperty(account.state)) {
+    stateInterests[account.state] = (account.amount * 0.189)
+  }
+  else {
+    stateInterests[account.state] =(stateInterests[account.state] + parseFloat(account.amount * 0.189))
+  }
+})
+
+const getHigherNumbers = Object.values(stateInterests).filter(account => account > 50000)
+
+sumOfHighInterests = getHigherNumbers.reduce((a, b) => {
+  let answer = a + parseFloat(b);
+  return (Math.round(answer * 100) / 100)
+}, 0);
+
+
+
+
 
 /*
   set `lowerSumStates` to be an array of two letter state
