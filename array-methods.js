@@ -212,6 +212,9 @@ sumOfHighInterests = getHigherNumbers.reduce((a, b) => {
  */
 var lowerSumStates = null;
 
+
+
+
 /*
   aggregate the sum of each state into one hash table
   `higherStateSums` should be the sum of all states with totals greater than 1,000,000
