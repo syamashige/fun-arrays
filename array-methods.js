@@ -5,17 +5,20 @@ var dataset = require('./dataset.json');
   greater than 100000
   assign the resulting new array to `hundredThousandairs`
 */
+let balances = dataset.bankBalances;
 
-var hundredThousandairs = [];
+var hundredThousandairs = null;
+let accountArray = [];
 // console.log("bank balances", bankBalances)
 
-dataset.bankBalances.forEach(function (account){
+balances.forEach(function (account){
   // console.log("account", account)
   if (account.amount > 100000) {
-    hundredThousandairs.push(account);
+    accountArray.push(account);
   }
   // console.log("hundredThousandairs", hundredThousandairs);
 });
+hundredThousandairs = accountArray;
 
 
 /*
@@ -36,18 +39,20 @@ dataset.bankBalances.forEach(function (account){
   assign the resulting new array to `datasetWithRoundedDollar`
 */
 
-let datasetWithRoundedDollar = [];
+let datasetWithRoundedDollar = null;
+let roundedArray = [];
 // var datasetWithRoundedDollar = [];
 // dataset.bankBalances.forEach(function (account) {
 //   account.rounded = Math.round(account.amount);
 //   datasetWithRoundedDollar.push(account);
 // });
 
-dataset.bankBalances.map(function (account) {
-  //console.log("account", account)
+balances.map(function (account) {
+  console.log("account", account)
   account.rounded = Math.round(account.amount);
-  return datasetWithRoundedDollar.push(account)
-}, datasetWithRoundedDollar)
+  return roundedArray.push(account)
+})
+datasetWithRoundedDollar = roundedArray;
 // console.log("dataset with rounded dollar", datasetWithRoundedDollar)
 // console.log("dataset", dataset)
 // console.log("Rounded Dataset", datasetWithRoundedDollar);
@@ -77,14 +82,15 @@ dataset.bankBalances.map(function (account) {
     }
   assign the resulting new array to `roundedDime`
 */
-var datasetWithRoundedDime = [];
-dataset.bankBalances.map(function (account) {
-  account.roundedDime = (Math.round((account.amount)*10)/10)
+var datasetWithRoundedDime = null;
+let roundedDimeArray = [];
+balances.map(function (account) {
+  account.roundedDime = (Math.round((account.amount) * 10) / 10)
   // console.log("rounded DIme", account)
-  datasetWithRoundedDime.push(account.amount);
-  datasetWithRoundedDime.push(account.state);
-  return datasetWithRoundedDime;
-}, datasetWithRoundedDime)
+  roundedDimeArray.push(account);
+  console.log("chcking the account", account)
+});
+datasetWithRoundedDime = roundedDimeArray;
 
 
 
