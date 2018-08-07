@@ -14,8 +14,7 @@ dataset.bankBalances.forEach(function (account){
   if (account.amount > 100000) {
     hundredThousandairs.push(account);
   }
-  // console.log(account.amount);
-  console.log("hundredThousandairs", hundredThousandairs);
+  // console.log("hundredThousandairs", hundredThousandairs);
 });
 
 
@@ -36,7 +35,12 @@ dataset.bankBalances.forEach(function (account){
     }
   assign the resulting new array to `datasetWithRoundedDollar`
 */
-var datasetWithRoundedDollar = null;
+var datasetWithRoundedDollar = [];
+dataset.bankBalances.forEach(function (account) {
+  account.rounded = Math.round(account.amount);
+  datasetWithRoundedDollar.push(account);
+});
+// console.log("Rounded Dataset", datasetWithRoundedDollar);
 
 /*
   DO NOT MUTATE DATA.
