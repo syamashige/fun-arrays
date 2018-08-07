@@ -6,6 +6,19 @@ var dataset = require('./dataset.json');
   assign the resulting new array to `hundredThousandairs`
 */
 
+var hundredThousandairs = [];
+// console.log("bank balances", bankBalances)
+
+dataset.bankBalances.forEach(function (account){
+  // console.log("account", account)
+  if (account.amount > 100000) {
+    hundredThousandairs.push(account);
+  }
+  // console.log(account.amount);
+  console.log("hundredThousandairs", hundredThousandairs);
+});
+
+
 /*
   DO NOT MUTATE DATA.
 
