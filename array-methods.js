@@ -6,6 +6,19 @@ var dataset = require('./dataset.json');
   assign the resulting new array to `hundredThousandairs`
 */
 
+const balances = dataset.bankBalances;
+
+var hundredThousandairs = null;
+let newAccountArray = [];
+
+balances.forEach(function (account) {
+  if (account.amount > 100000) {
+    newAccountArray.push(account);
+  }
+  return hundredThousandairs = newAccountArray;
+})
+
+
 /*
   DO NOT MUTATE DATA.
 
@@ -24,6 +37,16 @@ var dataset = require('./dataset.json');
   assign the resulting new array to `datasetWithRoundedDollar`
 */
 var datasetWithRoundedDollar = null;
+let roundedArray = [];
+
+balances.map(function (account) {
+  console.log("account before round", account)
+  roundedArray.rounded = Math.round(account.amount);
+  roundedArray.push(account);
+  console.log("account after round", account);
+})
+datasetWithRoundedDollar = roundedArray
+
 
 /*
   DO NOT MUTATE DATA.
